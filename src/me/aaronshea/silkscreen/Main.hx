@@ -10,6 +10,9 @@ import me.aaronshea.silkscreen.MainWindow;
 import flash.events.Event;
 import flash.events.MouseEvent;
 
+import flash.media.SoundMixer;
+import flash.media.SoundTransform;
+
 /**
  * @author Aaron M. Shea
  */
@@ -20,6 +23,9 @@ class Main extends Sprite
 	static function main() 
 	{
 		Lib.current.addChild(new Main());
+		
+		// Mute
+		SoundMixer.soundTransform = new SoundTransform(0);
 	}
 
 	public function new() 
