@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns="http://ns.adobe.com/air/application/18.0">
+  <id>Silkscreen</id>
+  <versionNumber>1.0</versionNumber>
+  <filename>Silkscreen</filename>
+  <name>Silkscreen</name>
+  <initialWindow>
+    <title>Silkscreen Transparent Render Tool</title>
+    <content>Silkscreen.swf</content>
+    <systemChrome>standard</systemChrome>
+    <transparent>false</transparent>
+    <visible>true</visible>
+    <minimizable>false</minimizable>
+    <maximizable>false</maximizable>
+    <resizable>false</resizable>
+    <width>600</width>
+    <height>400</height>
+  </initialWindow>
+  <supportedProfiles>extendedDesktop desktop</supportedProfiles>
+  <android>
+    <manifestAdditions><![CDATA[<manifest android:installLocation="auto" xmlns:android="http://schemas.android.com/apk/res/android" />]]></manifestAdditions>
+  </android>
+</application>

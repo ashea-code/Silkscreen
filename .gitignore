@@ -1,0 +1,7 @@
+air/
+bin/
+obj/
+silkscreen/
+bat/
+*.p12
+*.hxproj
