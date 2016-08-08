@@ -29,6 +29,7 @@ class FFMpegProcess
 		startupInfo.executable = ffmpeg;
 		var processArgs = new Vector<String>();
 
+		// Overrite existing files
 		processArgs.push("-y");
 		
 		processArgs.push("-threads");
@@ -54,8 +55,10 @@ class FFMpegProcess
 		processArgs.push("-i");
 		processArgs.push("-");
 		
+		// No audio tracks
 		processArgs.push("-an");
 		
+		// Output resolution
 		processArgs.push("-aspect");
 		processArgs.push(width + ":" + height);
 		
@@ -77,34 +80,38 @@ class FFMpegProcess
 		this.process = new NativeProcess();
 		process.addEventListener(NativeProcessExitEvent.EXIT, onExit);
 		
-		//process.addEventListener(IOErrorEvent.STANDARD_INPUT_IO_ERROR, stdError);
-		//process.addEventListener(IOErrorEvent.STANDARD_OUTPUT_IO_ERROR, stdError);
-		//process.addEventListener(IOErrorEvent.IO_ERROR, stdError);
+		process.addEventListener(IOErrorEvent.STANDARD_INPUT_IO_ERROR, stdError);
+		process.addEventListener(IOErrorEvent.STANDARD_OUTPUT_IO_ERROR, stdError);
+		process.addEventListener(IOErrorEvent.IO_ERROR, stdError);
 		
-		//process.addEventListener(ProgressEvent.STANDARD_OUTPUT_DATA, stdOutput);
-		//process.addEventListener(ProgressEvent.STANDARD_ERROR_DATA, stdOutputError);
+		process.addEventListener(ProgressEvent.STANDARD_OUTPUT_DATA, stdOutput);
+		process.addEventListener(ProgressEvent.STANDARD_ERROR_DATA, stdOutputError);
 	}
 	
 	public function onExit(evt:NativeProcessExitEvent)
 	{
+		// TODO If this is anything other than zero, bad things
 		trace("FFMpeg has exited with code " + evt.exitCode);
 	}
 	
 	public function stdError(evt:IOErrorEvent)
 	{
-		trace("FFMpeg ERROR: " + evt.text);
+		// TODO some more error checking would be nice
+		// trace("FFMpeg ERROR: " + evt.text);
 	}
 	
 	public function stdOutput(evt:ProgressEvent)
 	{
+		// TODO Nicer log (to a file?)
 		var msg = process.standardOutput.readUTFBytes(process.standardOutput.bytesAvailable);
-		trace(msg);
+		// trace(msg);
 	}
 	
 	public function stdOutputError(evt:ProgressEvent)
 	{
+		// TODO some more error checking would be nice
 		var msg = process.standardError.readUTFBytes(process.standardError.bytesAvailable);
-		trace(msg);
+		// trace(msg);
 	}
 	
 	public function startProcess()
@@ -115,6 +122,7 @@ class FFMpegProcess
 	
 	public function closeProcess()
 	{
+		// Close off the input stream so FFMpeg can exit cleanly
 		this.process.closeInput();
 	}
 	
