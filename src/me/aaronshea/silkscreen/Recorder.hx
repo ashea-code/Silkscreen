@@ -107,7 +107,7 @@ class Recorder
 		this.window.height = this.header.height;
 		this.window.stage.stageWidth = this.header.width;
 		this.window.stage.stageHeight = this.header.height;
-		this.window.stage.frameRate = this.header.fps;
+		this.window.stage.frameRate = this.framerateOut;
 		this.window.stage.scaleMode = StageScaleMode.NO_SCALE;
 		
 		// Matrix scaling
