@@ -163,7 +163,7 @@ class Recorder
 		
 		// Transparent drawing!
 		this.currentFrame.fillRect(this.currentFrame.rect, 0x00000000);
-		this.currentFrame.drawWithQuality(this.window.stage, this.transformMatrix, null, null, null, false, StageQuality.HIGH);
+		this.currentFrame.drawWithQuality(this.window.stage, this.transformMatrix, null, null, null, false, StageQuality.HIGH_16X16);
 		
 		// Throw the bytes over into FFMpeg
 		this.ffmpeg.stdIn.writeBytes(this.currentFrame.getPixels(this.currentFrame.rect));

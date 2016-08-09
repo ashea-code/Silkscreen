@@ -33,7 +33,10 @@ class FFMpegProcess
 		processArgs.push("-y");
 		
 		processArgs.push("-threads");
-		processArgs.push("0");
+		processArgs.push("4");
+		
+		processArgs.push("-framerate");
+		processArgs.push("1");
 		
 		// Input format will be raw
 		processArgs.push("-f");
@@ -111,7 +114,7 @@ class FFMpegProcess
 	{
 		// TODO some more error checking would be nice
 		var msg = process.standardError.readUTFBytes(process.standardError.bytesAvailable);
-		// trace(msg);
+		trace(msg);
 	}
 	
 	public function startProcess()
