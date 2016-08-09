@@ -36,9 +36,6 @@ class FFMpegProcess
 		processArgs.push("-threads");
 		processArgs.push("4");
 		
-		processArgs.push("-framerate");
-		processArgs.push("1");
-		
 		// Input format will be raw
 		processArgs.push("-f");
 		processArgs.push("rawvideo");
