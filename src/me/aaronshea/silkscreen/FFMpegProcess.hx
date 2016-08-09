@@ -10,6 +10,7 @@ import flash.events.ProgressEvent;
 import flash.filesystem.File;
 import flash.utils.ByteArray;
 import flash.utils.IDataOutput;
+import haxe.Log;
 
 /**
  * @author Aaron M. Shea
@@ -93,6 +94,9 @@ class FFMpegProcess
 	
 	public function onExit(evt:NativeProcessExitEvent)
 	{
+		Log.clear();
+		trace("Done!");
+
 		// TODO If this is anything other than zero, bad things
 		trace("FFMpeg has exited with code " + evt.exitCode);
 	}

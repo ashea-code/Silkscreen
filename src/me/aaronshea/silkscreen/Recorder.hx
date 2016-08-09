@@ -121,7 +121,7 @@ class Recorder
 		window.x = (window.stage.fullScreenWidth - window.width) / 2;
 		window.y = 0;
 		
-		window.activate();
+		//window.activate();
 	}
 	
 	private function onSWFLoaded(evt:Event)
