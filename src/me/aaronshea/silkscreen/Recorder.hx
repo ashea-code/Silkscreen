@@ -1,6 +1,7 @@
 package me.aaronshea.silkscreen;
 
 import flash.Boot;
+import flash.display.MovieClip;
 import flash.display.StageQuality;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
@@ -68,7 +69,7 @@ class Recorder
 		
 		// More window setup
 		window = new NativeWindow(options);
-		window.title = "Encoding...";
+		window.title = "Encoding Please Wait...";
 		
 		this.window.stage.align = StageAlign.TOP_LEFT;
 		this.window.stage.scaleMode = StageScaleMode.NO_SCALE;
@@ -121,7 +122,7 @@ class Recorder
 		window.x = (window.stage.fullScreenWidth - window.width) / 2;
 		window.y = 0;
 		
-		//window.activate();
+		window.activate();
 	}
 	
 	private function onSWFLoaded(evt:Event)
@@ -159,18 +160,18 @@ class Recorder
 		
 		this.currentFrame.lock();
 		
-		System.pause();
+		cast(this.swfLoader.content, MovieClip).stop();
 		
 		// Transparent drawing!
 		this.currentFrame.fillRect(this.currentFrame.rect, 0x00000000);
-		this.currentFrame.drawWithQuality(this.window.stage, this.transformMatrix, null, null, null, false, StageQuality.HIGH);
+		this.currentFrame.drawWithQuality(this.window.stage, this.transformMatrix, null, null, null, false, StageQuality.HIGH_16X16_LINEAR);
 		
 		// Throw the bytes over into FFMpeg
 		this.ffmpeg.stdIn.writeBytes(this.currentFrame.getPixels(this.currentFrame.rect));
 		
 		this.currentFrame.unlock();
 		
-		System.resume();
+		cast(this.swfLoader.content, MovieClip).play();
 	}
 	
 }
