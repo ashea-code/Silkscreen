@@ -1,4 +1,5 @@
 ## Silkscreen
+#### If you just want to download it, jump to the [Releases](https://github.com/AaronShea/Silkscreen/releases).
 
 Flash is a tool (kinda).
 
@@ -6,7 +7,7 @@ This is a tool for animations exported from Flash. It turns them into transparen
 
 It doesn't do much else. It's not the best code. But it does a job!
 
-If you just want to download it, jump to the [Releases](https://github.com/AaronShea/Silkscreen/releases).
+#### If you just want to download it, jump to the [Releases](https://github.com/AaronShea/Silkscreen/releases).
 
 ### What?
 
